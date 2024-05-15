@@ -1,18 +1,22 @@
-﻿using CourseWorkLibrary.Model;
+﻿using course_work.Model;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace CourseWorkLibrary.Repo
+namespace course_work.Repo
 {
     public class WorkRepository
     {
-        private readonly WorkContext _context;
+        private WorkContext _context;
 
-        public WorkRepository(WorkContext context)
-        {
-            _context = context;
+        public WorkRepository() {
+            _context = new WorkContext();
         }
 
-        public void AddWork(Work work)
+        public void AddWork(Work work) 
         {
             _context.Works.Add(work);
             _context.SaveChanges();
@@ -31,7 +35,7 @@ namespace CourseWorkLibrary.Repo
             }
             _context.SaveChanges();
         }
-        public void DeleteWork(int id)
+        public void DeleteWork(int id) 
         {
             _context.Works.Remove(_context.Works.Find(id));
             _context.SaveChanges();

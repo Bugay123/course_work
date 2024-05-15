@@ -1,4 +1,4 @@
-﻿namespace CourseWorkLibrary
+﻿namespace course_work
 {
     partial class Form1
     {
