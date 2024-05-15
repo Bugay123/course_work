@@ -1,27 +1,19 @@
-﻿using course_work.Model;
-using course_work.Repo;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+﻿using CourseWorkLibrary.Model;
+using CourseWorkLibrary.Repo;
 
-namespace course_work
+namespace CourseWorkLibrary
 {
     public partial class AddWorkForm : Form
     {
-        private WorkRepository _workRepository;
+        private static WorkContext _context = new WorkContext();
+        private static WorkRepository _workRepository;
         private Form1 _mainForm;
+
 
         public AddWorkForm(Form1 mainForm)
         {
             InitializeComponent();
-            _workRepository = new WorkRepository();
+            _workRepository = new WorkRepository(_context);
             _mainForm = mainForm;
         }
 

@@ -1,12 +1,7 @@
-﻿using course_work.Model;
+﻿using CourseWorkLibrary.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace course_work.Repo
+namespace CourseWorkLibrary.Repo
 {
     public class WorkContext : DbContext
     {

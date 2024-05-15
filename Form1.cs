@@ -1,16 +1,18 @@
-using course_work.Model;
-using course_work.Repo;
+using CourseWorkLibrary.Model;
+using CourseWorkLibrary.Repo;
 
-namespace course_work
+namespace CourseWorkLibrary
 {
     public partial class Form1 : Form
     {
-        private WorkRepository _workRepository;
+
+        private static WorkContext _context = new WorkContext();
+        private static WorkRepository _workRepository;
 
         public Form1()
         {
             InitializeComponent();
-            _workRepository = new WorkRepository();
+            _workRepository = new WorkRepository(_context);
             using (var context = new WorkContext())
             {
                 context.Database.EnsureCreated();
@@ -161,12 +163,12 @@ namespace course_work
         }
         private void sortByCourseRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-                if (sortByCourseRadioButton.Checked)
-                {
-                    var works = _workRepository.GetAllWorks().Where(w => w.Type == "CourseWork").ToList();
-                    dataGridView1.DataSource = works;
-                    dataGridView1.Refresh();
-                }
+            if (sortByCourseRadioButton.Checked)
+            {
+                var works = _workRepository.GetAllWorks().Where(w => w.Type == "CourseWork").ToList();
+                dataGridView1.DataSource = works;
+                dataGridView1.Refresh();
+            }
         }
         private void allWorksRadioButton_CheckedChanged(object sender, EventArgs e)
         {
